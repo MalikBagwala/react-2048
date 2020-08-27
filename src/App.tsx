@@ -9,8 +9,15 @@ const Div = styled.div`
   height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const H1 = styled.h1`
+  /* ... */
+  color: #545454;
+  font-size: 3rem;
 `;
 
 interface AppProps {}
@@ -34,6 +41,7 @@ const App: React.FC<AppProps> = () => {
   useHotkey(handleKeyPress);
   return (
     <Div>
+      <H1>2048</H1>
       <Board>
         {state.map((row, rowId) => {
           return row.map((col, colId) => (

@@ -7,5 +7,6 @@ export const StyledBoard = styled.div`
   row-gap: 10px;
   background: #bdbdbd;
   padding: 10px;
+  border-radius: 5px;
   /* ... */
 `;
