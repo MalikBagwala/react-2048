@@ -5,7 +5,7 @@ export const StyledBoard = styled.div`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 10px;
   row-gap: 10px;
-  background: #bdbdbd;
+  background: #989898;
   padding: 10px;
   border-radius: 5px;
   /* ... */
