@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Board from "./components/board/board.component";
 import Cell from "./components/cell/cell.component";
 import useHotkey, { ArrowKeyType } from "./hooks/useHotkey";
+import GameOver from "./components/game-over/game-over.component";
 const Div = styled.div`
   background: #f7f7f7;
   height: 100vh;
@@ -52,6 +53,7 @@ const App: React.FC<AppProps> = () => {
             <Cell key={`${rowId}-${colId}`} value={col} />
           ));
         })}
+        {isOver && <GameOver />}
       </Board>
     </Div>
   );

@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const StyledCell = styled.div`
-  height: 75px;
-  width: 75px;
+  height: 100px;
+  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;

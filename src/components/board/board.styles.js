@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledBoard = styled.div`
   display: grid;
@@ -8,5 +8,5 @@ export const StyledBoard = styled.div`
   background: #989898;
   padding: 10px;
   border-radius: 5px;
-  /* ... */
+  position: relative;
 `;
