@@ -22,12 +22,14 @@ const H1 = styled.h1`
 
 interface AppProps {}
 const App: React.FC<AppProps> = () => {
-  const [state, setState] = useState<any>([
+  const [state, setState] = useState([
     [2, 4, 8, 16],
     [32, 64, 128, 256],
     [512, 1024, 2048, null],
     [null, null, null, null],
   ]);
+
+  const [isOver, setOver] = useState(false);
 
   function handleKeyPress(type: ArrowKeyType) {
     const stateCopy = cloneDeep(state);
@@ -37,10 +39,9 @@ const App: React.FC<AppProps> = () => {
     stateCopy[random(0, 3)][random(0, 3)] = 16;
 
     setState(stateCopy);
+    setOver(state.every((row) => row.every((v) => v)));
   }
   useHotkey(handleKeyPress);
-
-  console.log(state);
 
   return (
     <Div>
