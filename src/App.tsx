@@ -23,9 +23,9 @@ const H1 = styled.h1`
 interface AppProps {}
 const App: React.FC<AppProps> = () => {
   const [state, setState] = useState<any>([
-    [null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null],
+    [2, 4, 8, 16],
+    [32, 64, 128, 256],
+    [512, 1024, 2048, null],
     [null, null, null, null],
   ]);
 

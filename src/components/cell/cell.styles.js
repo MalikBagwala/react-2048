@@ -19,64 +19,62 @@ export const StyledCell = styled.div`
         `;
       case 4:
         return css`
-          background: #fff8e5;
+          background: #fff6d8;
         `;
 
       case 8:
         return css`
-          background: #ffb74b;
-          color: white;
+          background: #ffe89b;
         `;
 
       case 16:
         return css`
-          background: #ff9900;
-          color: white;
+          background: #ffda61;
         `;
 
       case 32:
         return css`
-          background: #ff9900;
-          color: white;
+          background: #ffb038;
         `;
 
       case 64:
         return css`
           background: #ff9900;
-          color: white;
         `;
 
       case 128:
         return css`
-          background: #ff9900;
-          color: white;
+          background: #ff7474;
         `;
 
       case 256:
         return css`
-          background: #ff9900;
-          color: white;
+          background: #ff5858;
         `;
 
       case 512:
         return css`
-          background: #ff9900;
-          color: white;
+          background: #bd7e64;
         `;
 
       case 1024:
         return css`
-          background: #ff9900;
-          color: white;
+          background: #94543a;
         `;
 
       case 2048:
         return css`
-          background: #ff9900;
-          color: white;
+          background: #383838;
         `;
       default:
         break;
+    }
+  }}
+  ${(props) => {
+    if (props.value > 16) {
+      return css`
+        color: white;
+      `;
     }
   }}
 `;
