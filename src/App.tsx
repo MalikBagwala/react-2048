@@ -1,10 +1,11 @@
-import { cloneDeep, random } from "lodash-es";
-import React, { useState } from "react";
+import { cloneDeep, random, set } from "lodash-es";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import Board from "./components/board/board.component";
+import Button from "./components/button/button.component";
 import Cell from "./components/cell/cell.component";
-import useHotkey, { ArrowKeyType } from "./hooks/useHotkey";
 import GameOver from "./components/game-over/game-over.component";
+import useHotkey, { ArrowKeyType } from "./hooks/useHotkey";
 const Div = styled.div`
   background: #f7f7f7;
   height: 100vh;
@@ -24,26 +25,42 @@ const H1 = styled.h1`
 interface AppProps {}
 const App: React.FC<AppProps> = () => {
   const [state, setState] = useState([
-    [2, 4, 8, 16],
-    [32, 64, 128, 256],
-    [512, 1024, 2048, null],
-    [null, null, null, null],
+    [2, 2, 2, 2],
+    [2, 2, 4, 4],
+    [2, null, null, null],
+    [2, null, null, null],
   ]);
 
   const [isOver, setOver] = useState(false);
 
   function handleKeyPress(type: ArrowKeyType) {
     const stateCopy = cloneDeep(state);
-    stateCopy[random(0, 3)][random(0, 3)] = 2;
-    stateCopy[random(0, 3)][random(0, 3)] = 4;
-    stateCopy[random(0, 3)][random(0, 3)] = 8;
-    stateCopy[random(0, 3)][random(0, 3)] = 16;
+    switch (type) {
+      case "ArrowUp":
+        // setState(stateCopy);
+        return;
+
+      default:
+        break;
+    }
 
     setState(stateCopy);
-    setOver(state.every((row) => row.every((v) => v)));
   }
   useHotkey(handleKeyPress);
 
+  const handleNewGame = useCallback(() => {
+    const newArray: (number | null)[][] = [
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+    ];
+    for (let i = 0; i < 2; i++) {
+      const randCell = [random(0, 3), random(0, 3)];
+      set(newArray, randCell, (i + 1) * 2);
+    }
+    setState(newArray);
+  }, []);
   return (
     <Div>
       <H1>2048</H1>
@@ -55,6 +72,7 @@ const App: React.FC<AppProps> = () => {
         })}
         {isOver && <GameOver />}
       </Board>
+      <Button onClick={handleNewGame}>New Game</Button>
     </Div>
   );
 };
